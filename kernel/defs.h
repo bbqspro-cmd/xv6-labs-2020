@@ -160,7 +160,7 @@ int             uartgetc(void);
 // vm.c
 void            kvminit(void);
 void            kvminithart(void);
-uint64          kvmpa(uint64);
+uint64          kvmpa(pagetable_t, uint64); // 原有基础上增加了页表入参
 void            kvmmap(uint64, uint64, uint64, int);
 int             mappages(pagetable_t, uint64, uint64, uint64, int);
 pagetable_t     uvmcreate(void);
@@ -178,6 +178,13 @@ uint64          walkaddr(pagetable_t, uint64);
 int             copyout(pagetable_t, uint64, char *, uint64);
 int             copyin(pagetable_t, char *, uint64, uint64);
 int             copyinstr(pagetable_t, char *, uint64, uint64);
+void            vmprint(pagetable_t);
+void            vminit(pagetable_t);
+int             vmmap(pagetable_t, uint64, uint64, uint64, int);
+pagetable_t     createukpgtbl();  // 新增函数，全称 create user kernel page table，创建用户进程的内核页表
+void            freeukpgtbl(pagetable_t);   // 新增函数，用来释放用户内核页表
+
+
 
 // plic.c
 void            plicinit(void);
