@@ -177,8 +177,6 @@ UPROGS=\
 	$U/_zombie\
 
 
-
-
 ifeq ($(LAB),$(filter $(LAB), pgtbl lock))
 UPROGS += \
 	$U/_stats
@@ -227,6 +225,11 @@ endif
 ifeq ($(LAB),fs)
 UPROGS += \
 	$U/_bigfile
+endif
+
+ifeq ($(LAB),mmap)
+UPROGS += \
+	$U/_mmaptest
 endif
 
 
