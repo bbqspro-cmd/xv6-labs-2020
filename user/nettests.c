@@ -198,8 +198,9 @@ dns()
   memset(ibuf, 0, N);
   
   // 8.8.8.8: google's name server
-  dst = (8 << 24) | (8 << 16) | (8 << 8) | (8 << 0);
-
+  //dst = (8 << 24) | (8 << 16) | (8 << 8) | (8 << 0);
+  dst = (223 << 24) | (5 << 16) | (5 << 8) | (5 << 0);
+  
   if((fd = connect(dst, 10000, 53)) < 0){
     fprintf(2, "ping: connect() failed\n");
     exit(1);
